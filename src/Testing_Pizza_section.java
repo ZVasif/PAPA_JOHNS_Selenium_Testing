@@ -6,11 +6,12 @@ public class Testing_Pizza_section extends BaseStaticDriver {
     public static void main(String[] args){
         driver.get("https://www.papajohns.com");
 
-        WebElement country=driver.findElement(By.cssSelector("[alt=\"Azerbaijan\"]"));
+        WebElement country=driver.findElement(By.cssSelector("[alt=\"Turkey\"]"));
         country.click();
         waitLocator(5);
         WebElement pizza= driver.findElement(By.xpath("(//*[@class=\"wrap\"]/ul/li)[3]"));
         pizza.click();
+
 
 
         closeWindow();
