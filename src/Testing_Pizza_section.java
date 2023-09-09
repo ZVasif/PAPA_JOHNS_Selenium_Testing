@@ -1,4 +1,5 @@
 import Utils.BaseStaticDriver;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -28,21 +29,37 @@ public class Testing_Pizza_section extends BaseStaticDriver {
         Select select=new Select(menu);
         select.selectByValue("199");
 
-        WebElement mantar= driver.findElement(By.id("pds_product_addon69"));
+        WebElement mantar= driver.findElement(By.xpath("//*[text()='Mantar']"));
         Actions actions=new Actions(driver);
         Action action=actions.moveToElement(mantar).click().build();
         action.perform();
 
-        //action da xeta vermedi, amma click de etmedi
 
-//        WebElement extraSecim=driver.findElement(By.linkText("Seçim yap/Kapat..."));
-//        extraSecim.click();
-//        WebElement extra1= driver.findElement(By.cssSelector("[value=\"84\"]"));
-//        extra1.click();
-//        WebElement extra2= driver.findElement(By.cssSelector("[value=\"1353\"]"));
-//        extra2.click();
-//        WebElement extra3= driver.findElement(By.cssSelector("[value=\"129\"]"));
-//        extra3.click();
+        WebElement extraSecim=driver.findElement(By.linkText("Seçim yap/Kapat..."));
+        extraSecim.click();
+        WebElement extra1= driver.findElement(By.xpath("(//label[contains(@class,'col-sm-6')])[2]"));
+        extra1.click();
+        WebElement extra2= driver.findElement(By.xpath("(//label[contains(@class,'col-sm-6')])[13]"));
+        extra2.click();
+        WebElement extra3= driver.findElement(By.xpath("(//label[contains(@class,'col-sm-6')])[28]"));
+        extra3.click();
+        WebElement sebeteEkle2=driver.findElement(By.cssSelector("[class$=\"btn-red\"]"));
+        sebeteEkle2.click();
+
+        WebElement ok=driver.findElement(By.xpath("//*[@class=\"swal2-buttonswrapper\"]/button"));
+        if (ok.isDisplayed()){
+            ok.click();
+        }
+//        do {
+//            ok.click();
+//        }while (!ok.isEnabled());
+        WebElement sebeteGit= driver.findElement(By.linkText("SEPETE GİT"));
+        sebeteGit.click();
+        WebElement urunuSil= driver.findElement(By.xpath("(//*[@class='removeItem'])[2]"));
+        urunuSil.click();
+        WebElement bosmu=driver.findElement(By.xpath("(//*[contains(@class,'color_brown')])[4]"));
+
+        Assert.assertTrue(bosmu.getText().toLowerCase().contains("bulunmuyor!"));
 
 
 
