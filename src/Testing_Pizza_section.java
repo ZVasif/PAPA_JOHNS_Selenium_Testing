@@ -50,6 +50,7 @@ public class Testing_Pizza_section extends BaseStaticDriver {
         if (ok.isDisplayed()){
             ok.click();
         }
+
 //        do {
 //            ok.click();
 //        }while (!ok.isEnabled());
